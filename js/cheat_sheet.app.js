@@ -1,20 +1,28 @@
 var cheatSheet = angular.module('cheatSheet', ['ngRoute']);
 
 // configure our routes
-cheatSheet.config(function ($routeProvider) {
+cheatSheet.config(function ($routeProvider, $locationProvider ) {
+    //$locationProvider.html5Mode(true);
     $routeProvider
         // route for the home page
         .when('/', {
             templateUrl: 'views/home.html',
             controller: 'mainController'
+        }).when('/end2end', {
+            templateUrl: 'views/E2ETesting.html',
+            controller: 'e2etestingController'
         })
 
 });
 
 
-// create the controller and inject Angular's $scope
 cheatSheet.controller('mainController', function ($scope) {
+    $scope.jumboTitle = 'Writing Good Code!';
+    $scope.jumboMessage = 'DRC:s checklists and quick reference sheet for producing redable, maintainable, extendable and testable code!';
+});
 
-    // create a message to display in our view
-    $scope.message = 'Everyone come and see how good I look!';
+
+cheatSheet.controller('e2etestingController', function ($scope) {
+$scope.jumboTitle = 'End-2-End Testing';
+    $scope.jumboMessage = 'DRC:s Cheat Sheet for setting up and writing End-2-End Tests with Protractor.';
 });
