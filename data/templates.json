@@ -1,0 +1,4 @@
+{
+	"links": "templates/link_list_widget.html",
+	"sections": "templates/section_list_widget.html"
+}

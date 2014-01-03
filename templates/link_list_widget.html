@@ -1,0 +1,10 @@
+<h2>{{widget.name}}</h2>
+<table class="table table-striped">
+    <tbody>
+        <tr ng-repeat="link in widget.links">
+            <td>
+                <a href="{{link.link}}">{{link.text}}</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

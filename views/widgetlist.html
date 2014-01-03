@@ -4,9 +4,8 @@
         <p>{{jumboMessage}}</p>
     </div>
     <div class="row" >
-        <div class="col-12 col-sm-12 col-lg-6">
-            <h2>Git</h2>
-            <p>Table Here</p>
+        <div class="col-12 col-sm-12 col-lg-6" ng-repeat="widget in widgets" ng-controller="WidgetController" >
+            <ng-include src="template"></ng-include>
         </div>
         <!--/span-->
     </div>

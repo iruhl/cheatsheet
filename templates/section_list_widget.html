@@ -1,0 +1,5 @@
+<h2>{{widget.name}}</h2>
+<section ng-repeat="section in widget.sections">
+    <h4>{{section.title}}</h4>
+    <div ng-bind-html="section.text"></div>
+</section>
