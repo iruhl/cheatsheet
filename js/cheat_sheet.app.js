@@ -5,6 +5,9 @@ cheatSheet.factory('TemplateService', function ($resource) {
   return $resource('/data/templates.json');
 });
 
+cheatSheet.factory('WidgetService', function ($resource) {
+  return $resource('/data/widgets.json');
+});
 
 cheatSheet.config(function ($routeProvider, $locationProvider) {
     //$locationProvider.html5Mode(true);
@@ -19,8 +22,7 @@ cheatSheet.config(function ($routeProvider, $locationProvider) {
         }).when('/widgets', {
             templateUrl: 'views/widgetlist.html',
             controller: 'widgetlistController'
-        })
-
+        });
 });
 
 
@@ -37,13 +39,13 @@ $scope.jumboTitle = 'End-2-End Testing';
 });
 
 
-cheatSheet.controller('widgetlistController', function ($scope, $http) {
+cheatSheet.controller('widgetlistController', function ($scope, WidgetService) {
     $scope.jumboTitle = 'List of widgets';
     $scope.jumboMessage = 'Test to se if we can list different widgets with different templates';
     
-    $http.get('/data/widgets.json').success(function(data) {
-    $scope.widgets = data;
-  });
+    WidgetService.query(function(widgets){
+        $scope.widgets = widgets;
+    });
 });
 
 cheatSheet.controller('WidgetController', function ($scope , TemplateService ) {
