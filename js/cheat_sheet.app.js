@@ -9,6 +9,10 @@ cheatSheet.factory('WidgetService', function ($resource) {
   return $resource('/data/widgets.json');
 });
 
+cheatSheet.factory('TabsService', function ($resource) {
+  return $resource('/data/tabs.json');
+});
+
 cheatSheet.filter('widgetTag', function() {
     
     function isString( variable ) {
@@ -47,20 +51,43 @@ cheatSheet.filter('widgetTag', function() {
     }
   });
 
-cheatSheet.config(function ($routeProvider, $locationProvider) {
-    //$locationProvider.html5Mode(true);
-    $routeProvider
-        // route for the home page
-        .when('/', {
-            templateUrl: 'views/home.html',
-            controller: 'mainController'
-        }).when('/end2end', {
+
+var tabs = [
+    {
+        route:"/end2end", 
+        params:{
             templateUrl: 'views/E2ETesting.html',
             controller: 'e2etestingController'
-        }).when('/widgets', {
+        }
+    },
+    {
+        route:"/widgets", 
+        params:{
             templateUrl: 'views/widgetlist.html',
             controller: 'widgetlistController'
-        });
+        }
+    },
+];
+
+
+cheatSheet.config(function ($routeProvider, $locationProvider ) {
+    //$locationProvider.html5Mode(true);
+    tabs.forEach( function( route, index, routes ) {
+        $routeProvider.when(route.route, route.params );
+    }); 
+    
+    $routeProvider.otherwise({
+        templateUrl: 'views/home.html',
+        controller: 'mainController'
+    });
+    
+});
+    
+cheatSheet.controller('navController', function ($scope, TabsService) {
+   TabsService.query(function(tabs){
+        $scope.navTabs = tabs;
+        console.log(tabs);
+    });
 });
 
 
