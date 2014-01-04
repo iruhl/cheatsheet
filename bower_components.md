@@ -1,8 +1,9 @@
-#Bower Components Installed
+###Bower Components Installed
 
 - angular
+- angular-bootstrap
 - angular-resource
 - angular-route
-- angular-sanatize
+- angular-sanitize
 - bootstrap
 - jquery
