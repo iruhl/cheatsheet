@@ -1,10 +1,13 @@
 [
     {
         "name": "E2E",
-        "url":"#end2end"
+        "url":"#/end2end",
+        "tags":["e2e"]
+        
     },
     {
         "name": "Widgets",
-        "url":"#widgets"
+        "url":"#/widgets",
+        "tags":[]
     }
 ]

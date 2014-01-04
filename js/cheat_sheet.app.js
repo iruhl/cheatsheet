@@ -2,67 +2,107 @@ var cheatSheet = angular.module('cheatSheet', ['ngRoute', 'ngSanitize', 'ngResou
 
 
 cheatSheet.factory('TemplateService', function ($resource) {
-  return $resource('/data/templates.json');
+    return $resource('/data/templates.json');
 });
 
 cheatSheet.factory('WidgetService', function ($resource) {
-  return $resource('/data/widgets.json');
+    return $resource('/data/widgets.json');
 });
 
 cheatSheet.factory('TabsService', function ($resource) {
-  return $resource('/data/tabs.json');
+    return $resource('/data/tabs.json');
 });
 
-cheatSheet.filter('widgetTag', function() {
+
+cheatSheet.directive('bsNavItem', function ($route) {
     
-    function isString( variable ) {
-        return typeof variable === 'string'; 
-    } 
-    
-    function isArray( variable ) {
-        return Object.prototype.toString.call( variable ) === '[object Array]'; 
+    function trimLeadingHash( routeUrl ) {
+        return routeUrl.replace(/^#/, "");
     }
     
-    function taglistHasTag(taglist, tag ) {
+    function link(scope, element, attrs) {
+        scope.$on('$routeChangeSuccess', function( angularEvent , current, previous ) { 
+            if( !current.$$route ) { 
+                element.removeClass('active');
+                return;
+            }
+            if( current.$$route.originalPath === trimLeadingHash( scope.url ) ) {
+                element.addClass('active');
+            } else {
+                element.removeClass('active');
+            }
+        });
+    }
+    
+    return {
+        template: '<a href="{{url}}">{{text}}</a>',
+        scope: {
+            text: '@text',
+            url:'@url',
+        },
+        link:link
+    };
+});
+
+
+cheatSheet.filter('widgetTag', function () {
+
+    function isString(variable) {
+        return typeof variable === 'string';
+    } 
+
+    function isArray(variable) {
+        return Object.prototype.toString.call(variable) === '[object Array]';
+    }
+
+    function taglistHasTag(taglist, tag) {
         return taglist.indexOf(tag) !== -1
     }
-    
-    function widgethasTags( widget, tags  ) {
-        
-        for( var i = 0; i < tags.length; i++) {
-            if( taglistHasTag( widget.tags, tags[i] )) {return true; }
+
+    function widgethasTags(widget, tags) {
+
+        for (var i = 0; i < tags.length; i++) {
+            if (taglistHasTag(widget.tags, tags[i])) {
+                return true;
+            }
         }
-        
+
         // No specified tag was found on widget
-        return false;    
+        return false;
     }
-    
-    return function(input, tags) {
+
+    return function (input, tags) {
         // Guard aginst no tags
-        if( !tags  ) { return input; }
+        if (!tags) {
+            return input;
+        }
         // Guard aginst single string tag
-        if(isString( tags )) { tags = [tags]; }
+        if (isString(tags)) {
+            tags = [tags];
+        }
         // Guard agints tags is not an array
-        if( !isArray(tags) ) { return input;  }
-        
-      return input.filter(function(widget, index){
-          return widgethasTags(widget, tags);
-      });
+        if (!isArray(tags)) {
+            return input;
+        }
+
+        return input.filter(function (widget, index) {
+            return widgethasTags(widget, tags);
+        });
     }
-  });
+});
 
 
 var tabs = [
     {
-        route:"/end2end", 
-        params:{
+        route: "/end2end",
+        params: {
             templateUrl: 'views/E2ETesting.html',
             controller: 'e2etestingController'
         }
     },
     {
-        route:"/widgets", 
-        params:{
+        route: "/widgets",
+        params: {
             templateUrl: 'views/widgetlist.html',
             controller: 'widgetlistController'
         }
@@ -70,23 +110,22 @@ var tabs = [
 ];
 
 
-cheatSheet.config(function ($routeProvider, $locationProvider ) {
+cheatSheet.config(function ($routeProvider, $locationProvider) {
     //$locationProvider.html5Mode(true);
-    tabs.forEach( function( route, index, routes ) {
-        $routeProvider.when(route.route, route.params );
-    }); 
-    
+    tabs.forEach(function (route, index, routes) {
+        $routeProvider.when(route.route, route.params);
+    });
+
     $routeProvider.otherwise({
         templateUrl: 'views/home.html',
         controller: 'mainController'
     });
-    
+
 });
-    
+
 cheatSheet.controller('navController', function ($scope, TabsService) {
-   TabsService.query(function(tabs){
+    TabsService.query(function (tabs) {
         $scope.navTabs = tabs;
-        console.log(tabs);
     });
 });
 
@@ -98,23 +137,22 @@ cheatSheet.controller('mainController', function ($scope) {
 
 
 cheatSheet.controller('e2etestingController', function ($scope) {
-$scope.jumboTitle = 'End-2-End Testing';
+    $scope.jumboTitle = 'End-2-End Testing';
     $scope.jumboMessage = 'DRC:s Cheat Sheet for setting up and writing End-2-End Tests with Protractor.';
 });
 
 
-cheatSheet.controller('widgetlistController', function ($scope, WidgetService, widgetTagFilter ) {
+cheatSheet.controller('widgetlistController', function ($scope, WidgetService, widgetTagFilter) {
     $scope.jumboTitle = 'List of widgets';
     $scope.jumboMessage = 'Test to se if we can list different widgets with different templates';
-    
-    WidgetService.query(function(widgets){
-        $scope.widgets = widgetTagFilter(widgets, ['e2e'] );
+
+    WidgetService.query(function (widgets) {
+        $scope.widgets = widgetTagFilter(widgets, ['e2e']);
     });
 });
 
-cheatSheet.controller('WidgetController', function ($scope , TemplateService ) {
-    TemplateService.get(function(templates){
+cheatSheet.controller('WidgetController', function ($scope, TemplateService) {
+    TemplateService.get(function (templates) {
         $scope.template = templates[$scope.widget.type];
     });
 });
-

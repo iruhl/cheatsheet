@@ -29,7 +29,7 @@
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li ng-repeat="navTab in navTabs" ><a href="{{navTab.url}}">{{navTab.name}}</a></li>
+                    <li ng-repeat="navTab in navTabs" bs-nav-item text="{{navTab.name}}" url="{{navTab.url}}" ></li>
                 </ul>
             </div>
             <!-- /.nav-collapse -->
