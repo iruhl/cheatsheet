@@ -1,13 +1,12 @@
-var cheatSheet = angular.module('cheatSheet', ['ngRoute','ngSanitize']);
+var cheatSheet = angular.module('cheatSheet', ['ngRoute', 'ngSanitize', 'ngResource']);
 
 
-cheatSheet.factory('TemplateService', function($resource) {
-  return $resource('cats.json');
+cheatSheet.factory('TemplateService', function ($resource) {
+  return $resource('/data/templates.json');
 });
 
 
-// configure our routes
-cheatSheet.config(function ($routeProvider, $locationProvider ) {
+cheatSheet.config(function ($routeProvider, $locationProvider) {
     //$locationProvider.html5Mode(true);
     $routeProvider
         // route for the home page
@@ -22,10 +21,7 @@ cheatSheet.config(function ($routeProvider, $locationProvider ) {
             controller: 'widgetlistController'
         })
 
-
 });
-
-
 
 
 
@@ -47,16 +43,12 @@ cheatSheet.controller('widgetlistController', function ($scope, $http) {
     
     $http.get('/data/widgets.json').success(function(data) {
     $scope.widgets = data;
-        //console.log(data);
   });
 });
 
-var templates ={
-    "links":"templates/link_list_widget.html",
-    "sections":"templates/section_list_widget.html"
-};
-
-cheatSheet.controller('WidgetController', function ($scope) {
-    $scope.template = templates[$scope.widget.type];
+cheatSheet.controller('WidgetController', function ($scope , TemplateService ) {
+    TemplateService.get(function(templates){
+        $scope.template = templates[$scope.widget.type];
+    });
 });
 
