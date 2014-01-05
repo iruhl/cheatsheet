@@ -5,17 +5,10 @@ var tabs = [
     {
         route: "/end2end",
         params: {
-            templateUrl: 'views/E2ETesting.html',
-            controller: 'e2etestingController'
-        }
-    },
-    {
-        route: "/widgets",
-        params: {
             templateUrl: 'views/widgetlist.html',
             controller: 'widgetlistController'
         }
-    },
+    }
 ];
 
 
@@ -33,31 +26,39 @@ cheatSheet.config(function ($routeProvider, $locationProvider) {
 });
 
 cheatSheet.controller('navController', function ($scope, TabsService) {
-    // Defaults
-    $scope.tags = [];
+    
     $scope.navTabs = [];
-    $scope.jumboTitle = 'Writing Good Code!';
-    $scope.jumboMessage = 'DRC:s checklists and quick reference sheet for producing redable, maintainable, extendable and testable code!';
-
+    setDefaultsToScope();
+    
     TabsService.query(function (tabs) {
         $scope.navTabs = tabs;
     });
 
     $scope.$on('$routeChangeSuccess', function (angularEvent, current, previous) {
+        // Guard aginst no current route
         if (!current.$$route) {
-            $scope.tags = [];
+            setDefaultsToScope();
             return;
         }
-        console.log("navController: " + current.$$route.originalPath);
 
-
-        $scope.tags = getTagsFromRoute(current.$$route.originalPath);
+        var currentNavtab = getCurrentNavTabFromRoutePath(current.$$route.originalPath);
+        // Guard aginst no current NavTab Item
+        if(!currentNavtab){
+            setDefaultsToScope();
+            return;
+        }
+        
+        $scope.tags = currentNavtab.tags;
+        $scope.jumboTitle = currentNavtab.jumboTitle;
+        $scope.jumboMessage = currentNavtab.jumboMessage;
     });
 
-    function navTabsisEmpty() {
-        return $scope.navTabs.length <= 0;
+    function setDefaultsToScope() {
+        $scope.tags = [];
+        $scope.jumboTitle = 'Writing Good Code!';
+        $scope.jumboMessage = 'DRC:s checklists and quick reference sheet for producing redable, maintainable, extendable and testable code!';
     }
-
+    
     function trimLeadingHash(routeUrl) {
         return routeUrl.replace(/^#/, "");
     }
@@ -72,45 +73,22 @@ cheatSheet.controller('navController', function ($scope, TabsService) {
         return undefined;
     }
 
-    function getTagsFromRoute(path) {
-        // Guard aginst no navTabs
-        if (navTabsisEmpty()) {
-            return [];
-        }
-
-        var currentNavTab = find($scope.navTabs, function (element, index, array) {
+    function getCurrentNavTabFromRoutePath(path) {
+        return find($scope.navTabs, function (element, index, array) {
             if (path === trimLeadingHash(element.url)) {
                 return true;
             }
             return false;
-        });
-
-        if (!currentNavTab) {
-            return [];
-        }
-
-        console.log(currentNavTab);
-        return currentNavTab.tags;
+        });;
     }
 
 });
-
-
-cheatSheet.controller('mainController', function ($scope) {});
-
-
-cheatSheet.controller('e2etestingController', function ($scope) {
-    $scope.jumboTitle = 'End-2-End Testing';
-    $scope.jumboMessage = 'DRC:s Cheat Sheet for setting up and writing End-2-End Tests with Protractor.';
-});
-
 
 cheatSheet.controller('widgetlistController', function ($scope, WidgetService, widgetTagFilter) {
     WidgetService.query(function (widgets) {
         $scope.widgets = widgetTagFilter(widgets, $scope.tags);
     });
 });
-
 
 cheatSheet.controller('WidgetController', function ($scope, TemplateService) {
     TemplateService.get(function (templates) {

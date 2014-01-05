@@ -2,12 +2,8 @@
     {
         "name": "E2E",
         "url":"#/end2end",
-        "tags":["e2e"]
-        
-    },
-    {
-        "name": "Widgets",
-        "url":"#/widgets",
-        "tags":["e2e"]
+        "tags":["e2e"],
+        "jumboTitle":"End-2-End Testing",
+        "jumboMessage":"DRC:s Cheat Sheet for setting up and writing End-2-End Tests with Protractor."
     }
 ]
