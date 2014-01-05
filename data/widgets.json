@@ -3,7 +3,8 @@
 		"name": "Protractor Resource Links",
 		"type": "links",
 		"tags": [
-			"e2e"
+			"e2e",
+            "links"
 		],
 		"links": [
 			{
@@ -54,12 +55,37 @@
 		]
 	},
 	{
-		"name": "Showing off!",
+		"name": "Git Installation",
 		"type": "sections",
-		"tags": [],
+		"tags": ["git"],
 		"sections": [
 			{
 				"title": "Balba"
+			}
+		]
+	},
+    {
+		"name": "Git Resource Links",
+		"type": "links",
+		"tags": [
+			"git",
+            "links"
+		],
+		"links": [
+			{
+				"text": "Git",
+				"link": "https://github.com/angular/protractor"
+			}
+		]
+	},
+	{
+		"name": "Unit Testing",
+		"type": "sections",
+		"tags": ["Testing","UnitTesting"],
+		"sections": [
+			{
+				"title": "Baloba",
+                "text": "Very important"
 			}
 		]
 	}
