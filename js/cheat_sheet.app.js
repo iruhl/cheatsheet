@@ -38,19 +38,65 @@ cheatSheet.controller('navController', function ($scope, TabsService) {
     $scope.navTabs = [];
     $scope.jumboTitle = 'Writing Good Code!';
     $scope.jumboMessage = 'DRC:s checklists and quick reference sheet for producing redable, maintainable, extendable and testable code!';
-    
+
     TabsService.query(function (tabs) {
         $scope.navTabs = tabs;
     });
-    
-    $scope.$on('$routeChangeSuccess', function( angularEvent , current, previous ) { 
-        console.log( "navController: " + current );
+
+    $scope.$on('$routeChangeSuccess', function (angularEvent, current, previous) {
+        if (!current.$$route) {
+            $scope.tags = [];
+            return;
+        }
+        console.log("navController: " + current.$$route.originalPath);
+
+
+        $scope.tags = getTagsFromRoute(current.$$route.originalPath);
     });
+
+    function navTabsisEmpty() {
+        return $scope.navTabs.length <= 0;
+    }
+
+    function trimLeadingHash(routeUrl) {
+        return routeUrl.replace(/^#/, "");
+    }
+
+    function find(array, findElementCallback) {
+        var callbackResult = false;
+        for (var i = 0; i < array.length; i++) {
+            if (findElementCallback(array[i], i, array)) {
+                return array[i];
+            }
+        }
+        return undefined;
+    }
+
+    function getTagsFromRoute(path) {
+        // Guard aginst no navTabs
+        if (navTabsisEmpty()) {
+            return [];
+        }
+
+        var currentNavTab = find($scope.navTabs, function (element, index, array) {
+            if (path === trimLeadingHash(element.url)) {
+                return true;
+            }
+            return false;
+        });
+
+        if (!currentNavTab) {
+            return [];
+        }
+
+        console.log(currentNavTab);
+        return currentNavTab.tags;
+    }
+
 });
 
 
-cheatSheet.controller('mainController', function ($scope) {
-});
+cheatSheet.controller('mainController', function ($scope) {});
 
 
 cheatSheet.controller('e2etestingController', function ($scope) {

@@ -8,6 +8,6 @@
     {
         "name": "Widgets",
         "url":"#/widgets",
-        "tags":[]
+        "tags":["e2e"]
     }
 ]
