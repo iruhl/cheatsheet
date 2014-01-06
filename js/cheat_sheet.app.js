@@ -12,7 +12,7 @@ var tabs = [
 ];
 
 cheatSheet.config(function ($routeProvider, $locationProvider) {
-    //$locationProvider.html5Mode(true);
+    $locationProvider.html5Mode(true);
     tabs.forEach(function (route, index, routes) {
         $routeProvider.when(route.route, route.params);
     });

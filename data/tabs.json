@@ -1,14 +1,14 @@
 [
     {
         "name": "E2E",
-        "url":"#/widgets/end2end",
+        "url":"/widgets/end2end",
         "tags":["e2e"],
         "jumboTitle":"End-2-End Testing",
         "jumboMessage":"DRC:s Cheat Sheet for setting up and writing End-2-End Tests with Protractor."
     },
     {
         "name": "Git",
-        "url":"#/widgets/git",
+        "url":"/widgets/git",
         "tags":["git"],
         "jumboTitle":"Git rules!!!",
         "jumboMessage":"Resources that should help you master git."
