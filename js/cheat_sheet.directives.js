@@ -12,7 +12,7 @@ cheatSheetDirectives.directive('bsNavItem', function ($location) {
     
     function link( $scope, element, attrs) {
         $scope.$on('$locationChangeSuccess', function( angularEvent , newUrl , oldUrl  ) { 
-            if( pathisOwnUrl( scope.url )) {
+            if( pathisOwnUrl( $scope.url )) {
                 element.addClass('active');
             } else {
                 element.removeClass('active');
