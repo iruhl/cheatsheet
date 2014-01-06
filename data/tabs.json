@@ -12,5 +12,12 @@
         "tags":["git"],
         "jumboTitle":"Git rules!!!",
         "jumboMessage":"Resources that should help you master git."
+    },
+    {
+        "name": "Nåkkve",
+        "url":"#/widgets/nakkve",
+        "tags":["nåkkve"],
+        "jumboTitle":"Nåkkves tips och råd!!!",
+        "jumboMessage":"Very IMPRTANT!!!"
     }
 ]

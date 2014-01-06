@@ -88,5 +88,30 @@
                 "text": "Very important"
 			}
 		]
+	},
+    {
+		"name": "Nåkkves Links",
+		"type": "links",
+		"tags": [
+			"nåkkve",
+            "links"
+		],
+		"links": [
+			{
+				"text": "Nåkkve gillar",
+				"link": "https://github.com/angular/protractor"
+			}
+		]
+	},
+	{
+		"name": "Nåkkve Testar Testing",
+		"type": "sections",
+		"tags": ["nåkkve"],
+		"sections": [
+			{
+				"title": "Bonkers",
+                "text": "Very important"
+			}
+		]
 	}
 ]
