@@ -1,4 +1,4 @@
-var cheatSheet = angular.module('cheatsheet', ['ngRoute', 'ngSanitize', 'ngResource', 'cheatsheet.services', 'cheatsheet.filters', 'cheatsheet.directives']);
+var cheatSheet = angular.module('cheatsheet', ['ngRoute', 'ngSanitize', 'ngResource', 'cheatsheet.services', 'cheatsheet.filters', 'cheatsheet.directives', 'ui.bootstrap']);
 
 
 var tabs = [

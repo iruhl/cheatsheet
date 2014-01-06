@@ -1,5 +1,19 @@
 <h2>{{widget.name}}</h2>
-<section ng-repeat="section in widget.sections">
-    <h4>{{section.title}}</h4>
-    <div ng-bind-html="section.text"></div>
-</section>
+<table class="table table-striped">
+    <tbody>
+        <tr ng-repeat="section in widget.sections">
+            <td class="dropdown">
+                <a class="dropdown-toggle">
+                    <strong>
+                        <span class="caret"></span>{{section.title}}</strong>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <h4>{{section.title}}</h4>
+                        <div ng-bind-html="section.text"></div>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>
