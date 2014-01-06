@@ -1,18 +1,18 @@
-var cheatSheetDirectives = angular.module('cheatsheet.directives', ['ngRoute']);
+var cheatSheetDirectives = angular.module('cheatsheet.directives', []);
 
-cheatSheetDirectives.directive('bsNavItem', function ($route) {
+cheatSheetDirectives.directive('bsNavItem', function ($location) {
     
     function trimLeadingHash( routeUrl ) {
         return routeUrl.replace(/^#/, "");
     }
     
-    function link(scope, element, attrs) {
-        scope.$on('$routeChangeSuccess', function( angularEvent , current, previous ) { 
-            if( !current.$$route ) { 
-                element.removeClass('active');
-                return;
-            }
-            if( current.$$route.originalPath === trimLeadingHash( scope.url ) ) {
+    function pathisOwnUrl( url ){
+        return $location.path() === trimLeadingHash( url );
+    } 
+    
+    function link( $scope, element, attrs) {
+        $scope.$on('$locationChangeSuccess', function( angularEvent , newUrl , oldUrl  ) { 
+            if( pathisOwnUrl( scope.url )) {
                 element.addClass('active');
             } else {
                 element.removeClass('active');

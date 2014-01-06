@@ -3,14 +3,13 @@ var cheatSheet = angular.module('cheatsheet', ['ngRoute', 'ngSanitize', 'ngResou
 
 var tabs = [
     {
-        route: "/end2end",
+        route: "/widgets/:tagCollection",
         params: {
             templateUrl: 'views/widgetlist.html',
             controller: 'widgetlistController'
         }
     }
 ];
-
 
 cheatSheet.config(function ($routeProvider, $locationProvider) {
     //$locationProvider.html5Mode(true);
@@ -25,7 +24,7 @@ cheatSheet.config(function ($routeProvider, $locationProvider) {
 
 });
 
-cheatSheet.controller('navController', function ($scope, TabsService) {
+cheatSheet.controller('navController', function ($scope, $location, TabsService) {
     
     $scope.navTabs = [];
     setDefaultsToScope();
@@ -34,14 +33,9 @@ cheatSheet.controller('navController', function ($scope, TabsService) {
         $scope.navTabs = tabs;
     });
 
-    $scope.$on('$routeChangeSuccess', function (angularEvent, current, previous) {
-        // Guard aginst no current route
-        if (!current.$$route) {
-            setDefaultsToScope();
-            return;
-        }
-
-        var currentNavtab = getCurrentNavTabFromRoutePath(current.$$route.originalPath);
+    $scope.$on('$locationChangeSuccess', function( angularEvent , newUrl , oldUrl  ) { 
+        var currentNavtab = getCurrentNavTabFromRoutePath($location.path());
+        
         // Guard aginst no current NavTab Item
         if(!currentNavtab){
             setDefaultsToScope();
