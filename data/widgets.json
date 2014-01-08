@@ -79,6 +79,10 @@
             {
 				"text": "Git Book",
 				"link": "http://git-scm.com/documentation"
+			},
+            {
+				"text": "Git Download",
+				"link": "http://msysgit.github.com/"
 			}
 		]
 	},
