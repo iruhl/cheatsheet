@@ -1,0 +1,120 @@
+[
+	{
+		"name": "Protractor Resource Links",
+		"type": "links",
+		"tags": [
+			"e2e",
+            "links"
+		],
+		"links": [
+			{
+				"text": "Protractor",
+				"link": "https://github.com/angular/protractor"
+			},
+			{
+				"text": "Getting Started",
+				"link": "https://github.com/angular/protractor/blob/master/docs/getting-started.md"
+			},
+			{
+				"text": "Protractor API",
+				"link": "https://github.com/angular/protractor/blob/master/docs/api.md"
+			},
+			{
+				"text": "Protractor Source",
+				"link": "https://github.com/angular/protractor/blob/master/lib/protractor.js"
+			},
+			{
+				"text": "WebDriverJS User’s Guide",
+				"link": "https://code.google.com/p/selenium/wiki/WebDriverJs#Controlling_the_Host_Browser"
+			},
+			{
+				"text": "WebDriver Source",
+				"link": "https://code.google.com/p/selenium/source/browse/javascript/webdriver/webdriver.js"
+			}
+		]
+	},
+	{
+		"name": "Setting up Protractor",
+		"type": "sections",
+		"tags": [
+			"e2e"
+		],
+		"sections": [
+			{
+				"title": "Make sure java is installed",
+				"text": "<p>Open a comand window and type:\r\n                    <code>java -version</code>\r\n                    You should geta response like this:\r\n                    <pre>java version \"1.7.0_45\" Java(TM) SE Runtime Environment (build 1.7.0_45-b18) Java HotSpot(TM) Client VM (build 24.45-b08, mixed mode, sharing)</pre>\r\n if you do java is installed properly and you can move on to next section.</p>\r\n<p>If you get an answer like this:\r\n<pre>'java' is not recognized as an in operable program or batch file.</pre>java is not properly installed</p>\r\n <p>Java might still be installed butt not added to the path variable. Open\r\n <code>Control Panel\\Programs</code>if Java(32-bit) exists ther Java is installd otherwise go to\r\n<a href=\"http://java.com/download/\">java.com/download/</a>and download and install java.</p>\r\n <p>To add Java to the path variable open\r\n <code>Control Panel\\Programs</code>and open Java(32-bit) go to tab 'Java' click view and copy the Path column. Open\r\n <code>Control Panel\\System and Security\\System</code>and click 'Advanced system Setting' click Enviroment Variables button. In the system variables table find the path variable and add the java path to it. OBS only add the path up to the bin library ex:\r\n <code>C:\\Program Files (x86)\\Java\\jre7\\bin</code>\r\n </p>"
+			},
+			{
+				"title": "Make sure NodeJS is installed",
+				"text": "<p>Open a comand window and type: <code>node --version</code> You should geta response like this:\r\n<pre>v0.10.22</pre> If you do NodeJS is installed and you can move on to the next section. Otherwise go to <a href=\"http://nodejs.org/\">nodejs.org</a> and install NodeJS</p>"
+			},
+			{
+				"title": "Install Protractor",
+				"text": "Open a comand window and go to type"
+			}
+		]
+	},
+	{
+		"name": "Git Installation",
+		"type": "sections",
+		"tags": ["git"],
+		"sections": [
+			{
+				"title": "Install Mysis Git",
+                "text": "<p>Go to <a src=\"http:\/\/msysgit.github.io\/\">http:\/\/msysgit.github.io\/<\/a> download and instal Git. Open a comand window and type <code>git --version<\/code> to verify that git has been installed properly. You shoud get a response like this.<pre>git version 1.8.4.msysgit.0<\/pre><\/p>"
+			},
+            {
+				"title": "Install Source Tree",
+                "text": "<p>Go to <a src=\"http:\/\/www.sourcetreeapp.com\/\">http:\/\/www.sourcetreeapp.com\/<\/a> and download and instal Source Tree.<\/p>"
+			}
+		]
+	},
+    {
+		"name": "Git Resource Links",
+		"type": "links",
+		"tags": [
+			"git",
+            "links"
+		],
+		"links": [
+			{
+				"text": "Git Official",
+				"link": "http://git-scm.com/"
+			},
+            {
+				"text": "Git Book",
+				"link": "http://git-scm.com/documentation"
+			},
+            {
+				"text": "Git Download",
+				"link": "http://msysgit.github.com/"
+			},
+            {
+				"text": "Source Tree",
+				"link": "http://www.sourcetreeapp.com/"
+<<<<<<< .merge_file_Nos8Wk
+			},
+            {
+				"text": "Git Cheat Sheet",
+				"link": "http://overapi.com/git/"
+			},
+            {
+				"text": "Git Tutorials",
+				"link": "https://www.atlassian.com/git/"
+=======
+>>>>>>> .merge_file_pT1Mth
+			}
+		]
+	},
+	{
+		"name": "Unit Testing",
+		"type": "sections",
+		"tags": ["Testing","UnitTesting"],
+		"sections": [
+			{
+				"title": "Baloba",
+                "text": "Very important"
+			}
+		]
+	}
+]
