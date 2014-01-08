@@ -83,6 +83,10 @@
             {
 				"text": "Git Download",
 				"link": "http://msysgit.github.com/"
+			},
+            {
+				"text": "Source Tree",
+				"link": "http://www.sourcetreeapp.com/"
 			}
 		]
 	},
