@@ -96,6 +96,10 @@
             {
 				"text": "Git Cheat Sheet",
 				"link": "http://overapi.com/git/"
+			},
+            {
+				"text": "Git Tutorials",
+				"link": "https://www.atlassian.com/git/"
 			}
 		]
 	},
