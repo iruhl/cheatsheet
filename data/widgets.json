@@ -73,8 +73,12 @@
 		],
 		"links": [
 			{
-				"text": "Git",
-				"link": "https://github.com/angular/protractor"
+				"text": "Git Official",
+				"link": "http://git-scm.com/"
+			},
+            {
+				"text": "Git Book",
+				"link": "http://git-scm.com/documentation"
 			}
 		]
 	},
