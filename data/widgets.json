@@ -113,5 +113,16 @@
                 "text": "Very important"
 			}
 		]
+	},
+	{
+		"name": "Pontus Funderar på",
+		"type": "sections",
+		"tags": ["personal"],
+		"sections": [
+			{
+				"title": "Konstiga spørsmål",
+                "text": "Very important"
+			}
+		]
 	}
 ]
