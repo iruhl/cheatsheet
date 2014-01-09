@@ -61,11 +61,11 @@
 		"sections": [
 			{
 				"title": "Install Mysis Git",
-                "text": "<p>Go to <a src=\"http:\/\/msysgit.github.io\/\">http:\/\/msysgit.github.io\/<\/a> download and instal Git. Open a comand window and type <code>git --version<\/code> to verify that git has been installed properly. You shoud get a response like this.<pre>git version 1.8.4.msysgit.0<\/pre><\/p>"
+                "text": "<p>Go to <a href=\"http:\/\/msysgit.github.io\/\">http:\/\/msysgit.github.io\/<\/a> download and instal Git. Open a comand window and type <code>git --version<\/code> to verify that git has been installed properly. You shoud get a response like this.<pre>git version 1.8.4.msysgit.0<\/pre><\/p>"
 			},
             {
 				"title": "Install Source Tree",
-                "text": "<p>Go to <a src=\"http:\/\/www.sourcetreeapp.com\/\">http:\/\/www.sourcetreeapp.com\/<\/a> and download and instal Source Tree.<\/p>"
+                "text": "<p>Go to <a href=\"http:\/\/www.sourcetreeapp.com\/\">http:\/\/www.sourcetreeapp.com\/<\/a> and download and instal Source Tree.<\/p>"
 			}
 		]
 	},
