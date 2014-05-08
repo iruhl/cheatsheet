@@ -104,13 +104,35 @@
 		]
 	},
 	{
-		"name": "Unit Testing",
+		"name": "Karma Setup",
 		"type": "sections",
-		"tags": ["Testing","UnitTesting"],
+		"tags": ["Testing","UnitTesting","Karma"],
 		"sections": [
 			{
-				"title": "Baloba",
-                "text": "Very important"
+				"title": "Make sure NodeJS is installed",
+				"text": "<p>Open a comand window and type: <code>node --version</code> You should geta response like this:\r\n<pre>v0.10.22</pre> If you do NodeJS is installed and you can move on to the next section. Otherwise go to <a href=\"http://nodejs.org/\">nodejs.org</a> and install NodeJS</p>"
+			},
+            {
+				"title": "Install Karam",
+				"text": "<p>Open a comand window, navigate to your testfolder and type <pre>npm install karma --save-dev</pre> Install tools that we use in Karma <pre>npm install karma-jasmine karma-chrome-launcher --save-dev</pre> And then install karma kli so we can use Karam command. <pre>npm install -g karma-cli</pre></p>"
+			}
+		]
+	},
+    {
+		"name": "Code Shool",
+		"type": "links",
+		"tags": [
+			"codeshool",
+            "links"
+		],
+		"links": [
+			{
+				"text": "Javascript Primer 2014-07-29",
+				"link": "https://www.youtube.com/watch?v=Fo9S1O63D1s"
+			},
+            {
+				"text": "Karma Setup 2014-05-08 ",
+				"link": "https://www.youtube.com/watch?v=KOezwSkB9vA"
 			}
 		]
 	}
