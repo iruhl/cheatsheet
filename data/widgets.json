@@ -135,5 +135,16 @@
 				"link": "https://www.youtube.com/watch?v=KOezwSkB9vA"
 			}
 		]
+	},
+	{
+		"name": "New Angular Page",
+		"type": "sections",
+		"tags": ["Angular","AngularJS","Checklist"],
+		"sections": [
+			{
+				"title": "Adding a new Angular Page",
+                "text": "<h5>New Files:</h5><ul><li>Create New Module Js File with new Module and controller</li><li>Create View File</li></ul><h5>AngularMaster Changes:</h5><ul><li>Add script tag for module file</li><li>(Add Menu Items to new page)</li></ul><h5>*.app.js Changes:</h5><ul><li>Add Module to injection list</li><li>Add route for new page</li></ul>"
+			}
+		]
 	}
 ]
